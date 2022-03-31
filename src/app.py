@@ -17,7 +17,7 @@ ma = Marshmallow(app)
 class Articulos(db.Model):
     __tablename__ = "Articulos"
     id = db.Column(db.Integer, primary_key=True)
-    Nombre = db.Column(db.String(70), uniqued = True)
+    Nombre = db.Column(db.String(70))
     Precio = db.Column(db.Float())
 
     def __init__(self, Nombre, Precio):
@@ -35,8 +35,9 @@ articulos_schema =ArticulosSchema(many=True)
 @app.route('/articulos',methods=['GET','POST'])
 def articulos():
     all_articulos = Articulos.query.all()
-    resultadoArticulos = articulos_schema(all_articulos)
-    return resultadoArticulos
+    resultadoArticulos = articulos_schema.dump(all_articulos)
+    print (resultadoArticulos)
+    return "estos son los datos "
 
 @app.route('/addarticulos',methods=['POST'])
 def addarticulos():
