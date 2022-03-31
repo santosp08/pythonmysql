@@ -15,7 +15,7 @@ ma = Marshmallow(app)
 #crear las tablas de la base de datos
 
 class Articulos(db.Model):
-    __table__ = "Articulos"
+    __tablename__ = "Articulos"
     id = db.Column(db.Integer, primary_key=True)
     Nombre = db.Column(db.String(70), uniqued = True)
     Precio = db.Column(db.Float())
