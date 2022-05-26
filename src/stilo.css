@@ -1,0 +1,141 @@
+body {
+    padding-top: 20px;
+    background: hwb(240 5% 22%);
+  }
+  
+  .grid-1 {
+    display: grid;
+    width: 100%;
+    margin: 0 auto;
+    
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px auto auto 80px;
+    grid-gap: 10px;
+    
+    grid-template-areas: "header"
+                         "main"
+                         "sidebar"
+                         "footer";
+  }
+  
+  /* items */
+  
+  .grid-1 div {
+    color: rgb(219, 32, 32);
+    font-size: 16px;
+    padding: 10px;
+    }
+  
+  /* rwd */
+  
+  @media only screen and (min-width: 800px) {
+  
+      .grid-1 {
+      max-width: 800px;
+        
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 100px auto 150px;
+        grid-gap: 10px;
+        
+        grid-template-areas: "header   header   header"
+                             "main     main     sidebar"
+                             "footer   footer   footer";
+      }
+  
+      .grid-1 div {
+        font-size: 20px;
+        padding: 20px;
+       }
+  
+  }
+  
+  /* specific item styles */
+  
+  .item-1 {
+    background:chocolate;
+    grid-area: header;
+    display:block;
+    width: 760px;
+    height: 85px;
+  }
+  .item-2 {
+    background: #a87133;
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 100%;
+    word-wrap: break-word;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    display:block;
+    width: 760px;
+    height: 1300px;
+    
+    grid-template-areas: "header"
+                         "article"
+                         "sidebar";
+    
+  }
+  
+  /* rwd */
+  
+  @media only screen and (min-width: 800px) {
+  
+      .item-2 {
+        
+        grid-template-columns: 1fr 30%;
+        grid-template-rows: auto auto;
+        grid-gap: 30px;
+        display:block;
+        width: 760px;
+        height: 1300px;
+        grid-template-areas: "header header"
+        "article sidebar";
+      }
+
+    }
+    .item-4 {
+      background: #409198;
+      grid-area: header;
+      display:block;
+      width: 350px;
+      height: 200px;
+    }
+
+
+.item-5{
+  background:#8f4785 ;
+ grid-area: article;
+ display:block;
+ width: 350px;
+ height: 400px;
+}
+
+.item-7{
+    background:#2b3cda;
+    grid-area:sidebar ;
+    display:block;
+    width: 740px;
+    height: 150px;
+}
+.item-8{
+  grid-area: sidebar;
+  display:block;
+  width: 350px;
+  height: 200px;
+}
+
+.item-3{
+background:#3db15a ;
+grid-area: footer;
+display:block;
+width: 760px;
+height: 140px;
+}
+
+.item-6{
+background:#e03f3f ;
+grid-area: sidebar;
+display:block;
+width: 350px;
+height: 660px;
+}
