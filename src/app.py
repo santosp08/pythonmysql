@@ -4,30 +4,36 @@ from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@localhost/cur'
+from flask import Flask, request
+from flask_marshmallow import Marshmallow
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'http://localhost:8000/phpMyAdmin/index.php?db=nutriesthetic.&table=clientes&target=sql.php'
 app.config['SQALCHEMY_TRACK_MODIFACTIONS']= False
 
-app.secret_key = 'cur2022'
+app.secret_key = 'Santos0823'
 
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
 #crear las tablas de la base de datos
 
-class Articulos(db.Model):
-    __tablename__ = "Articulos"
-    id = db.Column(db.Integer, primary_key=True)
-    Nombre = db.Column(db.String(70))
-    Precio = db.Column(db.Float())
+class nutriesthetic(db.Model):
+    __tablename__ = "cliente"
+    nombre completo =  ID_Nombre_completo(VARCHAR, primary_key=True)
+    numero de identificacion= numero_identificacion(VARCHAR(50))
+    numero de telfono = numero_telefono(VARCHAR(50))
 
-    def __init__(self, Nombre, Precio):
-       self.Nombre = Nombre
-       self.Precio = Precio
+    def __init__(self,Nombre_completo,numero_identificacion,numero_telefono):
+       self.ID_Nombre_completo = Nombre_completo
+       self.numero_identificacion = numero_identificacion
+       self.numero_telefono = numero_telefono
 db.create_all()
 
 class ArticulosSchema(ma.Schema):
     class Meta:
-        fields = ('id','Nombre','Precio')
+        fields = ('ID_Nombre_completo','numero_identificacion','numero_telefono')
 
 articulo_schema = ArticulosSchema()
 articulos_schema =ArticulosSchema(many=True)
@@ -48,9 +54,10 @@ def addarticulos():
         if articuloexit :
             return "no se puede almacernar los datos, el articulo ya existe"
         else:
-            Nombre = request.form['Nombre']
-            Precio = request.form['Precio']
-            newarticulo = Articulos(Nombre, Precio)
+            ID_Nombre_completo = request.form['ID_Nombre_completo']
+            numero_identificacion = request.form['numero_identificacion']
+            numero_telefono = request.fron['numero_telefono']
+            newarticulo = Articulos(Nombre_completo,numero_identificacion,numero_telefono )
             #agregamos la data en la tabla
             db.session.add(newarticulo)
             db.session.commit()
