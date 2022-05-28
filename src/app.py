@@ -4,11 +4,6 @@ from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-from flask import Flask, request
-from flask_marshmallow import Marshmallow
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'http://localhost:8000/phpMyAdmin/index.php?db=nutriesthetic.&table=clientes&target=sql.php'
 app.config['SQALCHEMY_TRACK_MODIFACTIONS']= False
 
